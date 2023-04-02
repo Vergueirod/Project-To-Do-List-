@@ -4,7 +4,7 @@
   "description": "This project aims to apply my knowledge in CSS3, HTML5, Javascript, Typescript, Node.JS and MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "start-dev"
+    "start": "Node index"
   },
   "repository": {
     "type": "git",
