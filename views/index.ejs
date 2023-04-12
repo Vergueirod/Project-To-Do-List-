@@ -20,17 +20,9 @@
     <% } %>
     <header>
         <% if (task == null) { %>
-        <h1>TO DO LIST</h1>
-        <form action="/create" method="post">
-            <input type="text" name="task" id="task" placeholder="Enter the task">
-            <button id="addButton" type="submit">To add</button>
-        </form>
+            <%- include('./components/form.ejs', {titleForm: "TO DO LIST", action: "create", value: "", idBtn: "addButton", nameBtn:"adicionar"})%>
         <% } else { %>
-        <h1>EDITAR TAREFA</h1>
-        <form action="/updateOne/<%= task._id%>" method="post">
-            <input type="text" name="task" id="task" value="<%= task.task%>">
-            <button id="updateButton" type="submit">Update</button>
-        </form>
+            <%- include('./components/form.ejs', {titleForm: "EDITAR TAREFA", action: "updateOne/" + task._id, value: task.task, idBtn: "updateButton", nameBtn:"Update"})%>
         <% } %>
     </header>
     <section id="tasks">
@@ -51,25 +43,7 @@
     </section>
 
     <% if (taskDelete != null) { %>
-        <section id="modal">
-            <div id="card">
-
-                <div id="head">
-                    <h2>Confirmação</h2>
-                    <a id="close" href="/"><i class="bi bi-x"></i></a>
-                </div>
-                
-                <hr>
-                <p>Deseja realmente apagar a tarefa: <%= taskDelete.task %> ? </p>
-                
-                <div id="btns" >
-                    <a id="btnYes" href="/deleteOne/<%= taskDelete._id%>">Yes</a>
-                    <a id="btnNot" href="/">No</a>
-                </div>
-
-            </div>
-
-        </section>
+        <%- include('./components/modalDel.ejs') %>
     <% } %>
     <script src="script.js"></script>
 </body>
